@@ -12,29 +12,29 @@ class ProductCategorySeeder extends Seeder
      */
     public function run(): void
     {
-        $vegetableCategories = array(
-            "Leafy Greens" => array("Spinach", "Kale", "Lettuce", "Swiss chard", "Collard greens"),
-            "Cruciferous Vegetables" => array("Broccoli", "Cauliflower", "Brussels sprouts", "Cabbage"),
-            "Root Vegetables" => array("Carrots", "Potatoes", "Sweet potatoes", "Beets", "Radishes"),
-            "Allium Vegetables" => array("Onions", "Garlic", "Leeks", "Shallots", "Chives"),
-            "Gourd and Squash Vegetables" => array("Zucchini", "Butternut squash", "Acorn squash", "Pumpkin", "Cucumber"),
-            "Nightshade Vegetables" => array("Tomatoes", "Bell peppers", "Eggplant"),
-            "Podded Vegetables" => array("Peas", "Green beans", "Snap peas", "Edamame"),
-            "Stalk and Stem Vegetables" => array("Asparagus", "Celery", "Rhubarb", "Bamboo shoots"),
-            "Tubers" => array("Cassava", "Yams"),
-            "Miscellaneous Vegetables" => array("Artichokes", "Avocado", "Mushrooms", "Okra"),
-        );
+        $ingredientCategories = [
+            "Leafy Greens" => ["Spinach", "Kale", "Lettuce", "Swiss chard", "Collard greens"],
+            "Cruciferous Vegetables" => ["Broccoli", "Cauliflower", "Brussels sprouts", "Cabbage"],
+            "Root Vegetables" => ["Carrots", "Potatoes", "Sweet potatoes", "Beets", "Radishes"],
+            "Allium Vegetables" => ["Onions", "Garlic", "Leeks", "Shallots", "Chives"],
+            "Gourd and Squash Vegetables" => ["Zucchini", "Butternut squash", "Acorn squash", "Pumpkin", "Cucumber"],
+            "Nightshade Vegetables" => ["Tomatoes", "Bell peppers", "Eggplant"],
+            "Podded Vegetables" => ["Peas", "Green beans", "Snap peas", "Edamame"],
+            "Stalk and Stem Vegetables" => ["Asparagus", "Celery", "Rhubarb", "Bamboo shoots"],
+            "Tubers" => ["Cassava", "Yams"],
+            "Miscellaneous Vegetables" => ["Artichokes", "Avocado", "Mushrooms", "Okra"],
+        ];
 
-        foreach ($vegetableCategories as $categoryName => $vegetables) {
+        foreach ($ingredientCategories as $categoryName => $ingredients) {
             $category = \App\Models\ProductCategory::create([
                 'name' => $categoryName,
                 'slug' => \Illuminate\Support\Str::slug($categoryName),
             ]);
 
-            foreach ($vegetables as $vegetableName) {
+            foreach ($ingredients as $ingredientName) {
                 \App\Models\ProductCategory::create([
-                    'name' => $vegetableName,
-                    'slug' => \Illuminate\Support\Str::slug($vegetableName),
+                    'name' => $ingredientName,
+                    'slug' => \Illuminate\Support\Str::slug($ingredientName),
                     'parent_id' => $category->id,
                 ]);
             }
