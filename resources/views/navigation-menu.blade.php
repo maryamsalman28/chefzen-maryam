@@ -110,7 +110,7 @@
                                 {{ __('Manage Products') }}
                             </div>
 
-                            <x-dropdown-link href="">
+                            <x-dropdown-link href="{{ route('product-category.index') }}">
                                 {{ __('Categories') }} <!-- put the routing here once you're done with product category -->
                             </x-dropdown-link>
 
